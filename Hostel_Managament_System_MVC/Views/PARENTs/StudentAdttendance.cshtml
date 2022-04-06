@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Hostel_Managament_System_MVC.Models.StudentEntry>
+
+@{
+    ViewBag.Title = "StudentAdttendance";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Student Adttendance Report</h2>
+<div class="form-control">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OUTTIME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.INTIME)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.latitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.longitude)
+                </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.STUDENTID)
+            </th>*@
+            <th>
+                Addrss
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OUTTIME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.INTIME)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.latitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.longitude)
+                    </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.STUDENTID)
+                </td>*@
+                <td>
+                    Sardar Patel Hostel
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,203 @@
+﻿@model Hostel_Managament_System_MVC.Models.StudentEntry
+@{
+    ViewBag.Title = "Student_Entry";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+
+<p style="font-size:20px;color:red;">@TempData["error"]</p>
+
+@*<p style="font-size:20px;color:red;">@Session["Message"]</p>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-control">
+        <h3 class="fw-normal text-black mb-5">Student Entry </h3>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                @*<input type="button" value="Click to Display Map" class="btn-success" onclick="DisplayGoogleMap()" />*@
+                <div id="dvMap" class="card" style=" width: 100%; height: 80%"></div>
+                <br />
+
+            </div>
+            @*<div class="contact-item contact-left">
+
+                <div id="dvMap" class="card" style="width: 900px; height: 500px">
+                </div>
+
+            </div>*@
+            <div class="col-md-6">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StudentName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control", @Value = @Session["FirstName"], @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @Value = @DateTime.Now.ToShortDateString(), @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @if (Session["outtime"] != null)
+                {
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OUTTIME, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OUTTIME, new { htmlAttributes = new { @class = "form-control", @Value = @Session["outtime"], @readonly = "readonly", min = "07:00" } })
+                            @Html.ValidationMessageFor(model => model.OUTTIME, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.INTIME, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.INTIME, new { htmlAttributes = new { @class = "form-control", max = "19:00" } })
+                            @Html.ValidationMessageFor(model => model.INTIME, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OUTTIME, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OUTTIME, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.OUTTIME, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.latitude, new { htmlAttributes = new { @type = "hidden", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.latitude, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.longitude, new { htmlAttributes = new { @type = "hidden", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.longitude, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <input type="text" value="@Session["UserID"]" name="STUDENTID" id="STUDENTID" hidden />
+                @*<div class="form-group">
+                @Html.LabelFor(model => model.STUDENTID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.STUDENTID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.STUDENTID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" id="test" value="Submit" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+@*<script src="https://maps.googleapis.com/maps/api/js?"></script>
+<script type="text/javascript">
+
+    function DisplayGoogleMap() {
+        var latitude = 23.075357209298733;
+        var longitude = 72.5115033907525;
+
+
+        //Set the Latitude and Longitude of the Map
+        var myAddress = new google.maps.LatLng(latitude, longitude);
+
+        //Create Options or set different Characteristics of Google Map
+        var mapOptions = {
+            center: myAddress,
+            zoom: 15,
+            minZoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        //Display the Google map in the div control with the defined Options
+        var map = new google.maps.Map(document.getElementById("myDiv"), mapOptions);
+
+        //Set Marker on the Map
+        var marker = new google.maps.Marker({
+            position: myAddress,
+            animation: google.maps.Animation.BOUNCE,
+        });
+        marker.setMap(map);
+
+
+    }
+
+</script>
+<script>
+    $(document).ready(function () {
+
+        $("#latitude").val(23.075357209298733);
+        $("#longitude").val(72.5115033907525);
+
+    });
+</script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>*@
+<script>
+    $(document).ready(function () {
+
+        $("#latitude").val(23.075357209298733);
+        $("#longitude").val(72.5115033907525);
+
+    });
+</script>
+
+<script type="text/javascript">
+
+    var markers = [
+
+        { 'title': 'Sardar Patel Hostel', 'lat': '23.075357209298733', 'lng': '72.5115033907525', 'description': 'Sardar Patel Hostel' }];;
+    window.onload = function () {
+    var mapOptions = {
+    center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var infoWindow = new google.maps.InfoWindow();
+    var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+    for (i = 0; i < markers.length; i++) {
+    var data = markers[i]
+    var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+    var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    title: data.title
+    });
+    (function (marker, data) {
+    google.maps.event.addListener(marker, "click", function (e) {
+    infoWindow.setContent(data.description);
+    infoWindow.open(map, marker);
+    });
+    })(marker, data);
+    }
+    }
+</script>

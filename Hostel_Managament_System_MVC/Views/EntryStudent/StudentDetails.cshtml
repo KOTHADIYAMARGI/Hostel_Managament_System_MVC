@@ -1,0 +1,97 @@
+﻿
+
+
+@model IEnumerable<Hostel_Managament_System_MVC.Models.StudentEntry>
+
+@{
+    ViewBag.Title = "StudentDetails";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Attendance Report</h2>
+<hr />
+<style>
+    th {
+        color: black;
+        font-size: 20px;
+        font-family: 'Times New Roman';
+    }
+
+    tr {
+        color: steelblue;
+        font-size: 20px;
+    }
+</style>
+<p style="font-size:20px;color:red;">@TempData["error"]</p>
+<table class="table table-striped " style="border: 5px solid">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OUTTIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INTIME)
+        </th>
+        <th>
+            Addrss
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OUTTIME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.INTIME)
+            </td>
+            <td>
+                Sardar Patel Hostel
+            </td>
+          
+
+        </tr>
+    }
+
+</table>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@*<script>
+    swal({
+        title: "Good job!",
+        text: "Attandence Successfully",
+        icon: "success",
+        button: "ok",
+    });
+</script>*@
+@*<script type="text/javascript">
+
+    @if(Session["Message"] != null) {
+        <text>
+            $(window).load(function()
+                {
+                $(document).ready(function()
+                    {
+                    swal({
+                        title: "Good job!",
+                        text: "@Session["Message"]",
+                        icon: "success",
+                        button: "ok",
+                    });
+                });
+            }); </text>
+    }
+</script>*@

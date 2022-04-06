@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Hostel_Managament_System_MVC.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="latitude" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">23.075357209298733</Value>
+    </Setting>
+    <Setting Name="longitude1" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">72.5115033907525</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

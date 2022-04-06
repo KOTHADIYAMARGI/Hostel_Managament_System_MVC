@@ -1,0 +1,806 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8E7B6D35-E1A6-4183-89A4-C81324274C37}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hostel_Managament_System_MVC</RootNamespace>
+    <AssemblyName>Hostel_Managament_System_MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44379</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminPageController.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\Admin_ParentsController.cs" />
+    <Compile Include="Controllers\Admin_StaffController.cs" />
+    <Compile Include="Controllers\Admin_StudentEntries1Controller.cs" />
+    <Compile Include="Controllers\changepasswordController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\EntryStudentController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PARENTsController.cs" />
+    <Compile Include="Controllers\SendMailerController.cs" />
+    <Compile Include="Controllers\StaffsController.cs" />
+    <Compile Include="Controllers\StudentEntriesController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\Student_AdminController.cs" />
+    <Compile Include="Controllers\USERTYPESController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\FEE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\login.cs" />
+    <Compile Include="Models\LogintypeViewModel.cs" />
+    <Compile Include="Models\MailModel.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PARENT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROOM.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROOM_MAPPING.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Staff.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentEntry.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERTYPE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserTypeLogin.cs" />
+    <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\401.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\404.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\500.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\assets\demo\chart-area-demo.js" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\assets\demo\chart-bar-demo.js" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\assets\demo\chart-pie-demo.js" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\assets\demo\datatables-demo.js" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\assets\img\error-404-monochrome.svg" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\charts.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\css\styles.css" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\index.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\js\datatables-simple-demo.js" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\js\scripts.js" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\layout-sidenav-light.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\layout-static.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\login.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\password.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\register.html" />
+    <Content Include="AdminTheme\startbootstrap-sb-admin-gh-pages\tables.html" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="image\1600404760_photo_documents.jpg" />
+    <Content Include="image\1600404809_photo_documents.jpg" />
+    <Content Include="image\1600926893_photo_documents.jpg" />
+    <Content Include="image\16_05_17_111634_bmch_college.jpg" />
+    <Content Include="image\1946025607dea1432f49b3e7f0f84f3f.jpg" />
+    <Content Include="image\982215691 %282%29.png" />
+    <Content Include="image\banner.png" />
+    <Content Include="image\bg-masthead.jpg" />
+    <Content Include="image\bookshelf.png" />
+    <Content Include="image\bunk-bed.png" />
+    <Content Include="image\dormitory.png" />
+    <Content Include="image\download %281%29.jpg" />
+    <Content Include="image\download %282%29.jpg" />
+    <Content Include="image\download.jpg" />
+    <Content Include="image\green-979055_960_720.jpg" />
+    <Content Include="image\Hostel Management-01 %281%29.jpg" />
+    <Content Include="image\hostel-and-tourists-flat-design-concept-vector-37973094.jpg" />
+    <Content Include="image\hostel-youth-hostel.jpg" />
+    <Content Include="image\hostel.png" />
+    <Content Include="image\istockphoto-627070300-170667a.jpg" />
+    <Content Include="image\learning-and-success.jpg" />
+    <Content Include="image\Media,985180,smxx %282%29.jpg" />
+    <Content Include="image\ogimage1.png" />
+    <Content Include="image\OIP %281%29.jpg" />
+    <Content Include="image\OIP %282%29.jpg" />
+    <Content Include="image\OIP %283%29.jpg" />
+    <Content Include="image\OIP %284%29.jpg" />
+    <Content Include="image\OIP %285%29.jpg" />
+    <Content Include="image\OIP %287%29.jpg" />
+    <Content Include="image\OIP %288%29.jpg" />
+    <Content Include="image\OIP.jpg" />
+    <Content Include="image\Password-Reset.jpg" />
+    <Content Include="image\photo-1521737852567-6949f3f9f2b5.jpg" />
+    <Content Include="image\restaurant-cutlery-circular-symbol-of-a-spoon-and-a-fork-in-a-circle %281%29.png" />
+    <Content Include="image\solar-energy.png" />
+    <Content Include="image\swing-zula-500x500.jpg" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="image\Hostel Management-01.webp" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Theme\css\styles.css" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\css\prism.css" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\css\style.css" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\favicon\apple-touch-icon-32-precomposed.png" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\favicon\apple-touch-icon-48-precomposed.png" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\favicon\favicon.png" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\images\logo.png" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\images\logo_footer.png" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\index.html" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\javascript\html5.js" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\javascript\jquery.easing.1.3.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\javascript\jquery.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\javascript\jquery.nav.js" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\javascript\jquery.scrollTo.js" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\javascript\main.js" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\javascript\prism.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\404.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\blog-detail.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\blog-grid-1.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\blog-grid.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\blog-list-1.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\blog-list-2.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\blog-list.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\coming-soon.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\contact-v2.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\contact.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\faqs.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\fonts\fontawesome-webfont.svg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\icon\favicon.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\avatar-1.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\avatar.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\bg-countdown-1-962x506.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\1.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\10.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\11.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\12.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\13.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\14.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\15.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\16.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\17.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\18.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\19.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\2.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\20.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\21.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\3.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\4.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\5.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\6.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\7.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\8.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\9.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\comment1-1.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\comment1.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\comment2.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-1-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-2-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-3-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-4-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-5-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-6-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-7-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-8-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\new-lastest-9-370x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\blog\search_icon.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\gallery\gallery-1-870x377.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\gallery\gallery-2-870x377.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-1173x620.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-277x277.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-370x270.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-370x370.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-375x240.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-375x500.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-450x320.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-455x455.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-575x277.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-575x575.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-576x300.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-610x377.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-930x930.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-1-960x800.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-277x277.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-370x270.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-370x370.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-375x240.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-375x500.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-450x320.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-455x455.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-575x575.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-576x300.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-610x377.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-2-960x800.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-3-370x270.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-3-370x370.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-3-450x320.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-3-455x455.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-3-576x300.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-3-610x377.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-3-960x800.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-4-370x370.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-4-455x455.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-4-576x300.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-4-960x800.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-5-370x370.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-5-576x300.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\image-box\imgbox-6-370x370.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\instagram\instagram-1-337x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\instagram\instagram-2-337x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\instagram\instagram-3-337x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\instagram\instagram-4-337x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\instagram\instagram-5-337x280.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\logo%402x.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\logo.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\maps\map_icon.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\mega-menu\1.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\parallax\bg-parallax1.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\parallax\bg-parallax2.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\parallax\bg-parallax3.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\parallax\bg-parallax4.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\1.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\10.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\2.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\3.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\4.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\5.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\6.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\7.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\8.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\pattern\9.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\s-01.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\s-02.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\s-03.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\1.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\10.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\11.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\12.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\13.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\14.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\15.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\16.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\17.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\18.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\19.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\2.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\20.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\21.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\3.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\4.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\5.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\6.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\7.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\8.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-3\9.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\1.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\10.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\11.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\12.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\13.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\14.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\15.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\16.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\17.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\18.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\19.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\2.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\20.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\21.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\22.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\23.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\24.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\25.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\26.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\27.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\28.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\29.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\3.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\30.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\31.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\32.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\4.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\5.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\6.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\7.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\8.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-4\9.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\1.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\10.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\11.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\12.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\13.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\14.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\15.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\2.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\3.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\4.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\5.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\6.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\7.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\8.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-5\9.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\1.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\10.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\11.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\12.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\2.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\3.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\4.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\5.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\6.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\7.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\8.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-6full\9.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-01.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-02.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-03.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-04.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-05.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-06.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-07.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-desc-01.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-desc-02.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-desc-03.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\detail-desc-04.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-01.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-02.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-03.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-04.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-05.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-06.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-07.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-08.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-09.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-10.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-11.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\sh-detail\thumb-detail-12.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\slider\slider-bg-1.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\slider\slider-bg-2.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\slider\slider-bg-3.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\slider\slider-bg-4.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\slider\slider-bg-5.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\slider\slider-bg-7.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\slider\slider-bg-8.jpg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\wordpress-version.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v10.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v2.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v3.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v4.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v5.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v6.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v7.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v8.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index-v9.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\index.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\bootstrap.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\equalize.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\gmap3.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\images-loaded.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery-countTo.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery-ui.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery-waypoints.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery.cookie.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery.countdown.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery.easing.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery.flexslider-min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery.gomap-1.3.2.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery.hoverdir.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery.isotope.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\jquery.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\magnific.popup.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\main.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\owl.carousel.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\parallax.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\rev-slider.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\switcher.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\javascript\tether.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\assets\coloredbg.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\assets\gridtile.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\assets\gridtile_3x3.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\assets\gridtile_3x3_white.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\assets\gridtile_white.png" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\assets\loader.gif" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\css\layers.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\css\navigation.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\css\settings.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\fonts\revicons\revicons90c6.svg" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.actions.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.carousel.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.kenburn.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.layeranimation.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.migration.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.navigation.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.parallax.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.slideanims.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\extensions\revolution.extension.video.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\js\jquery.themepunch.tools.min.js" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-3col-slide.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-3col.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-4col.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-5col.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-detail-des.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-detail-exter.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-detail-fix.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-detail-group.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-detail-option.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-detail-video.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\shop-detail-zoom.html" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\animate.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\bootstrap.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\colors\color1.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\colors\color2.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\colors\color3.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\colors\color4.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\flexslider.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\font-awesome.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\jquery-ui.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\magnific-popup.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\owl.carousel.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\responsive.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\shortcodes.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\style.css" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\stylesheets\woocommerce.css" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\documentation\._index.html" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\modaz\._index-v2.html" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\modaz\images\._logo.png" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\modaz\images\._wordpress-version.png" />
+    <Content Include="Views\Shared\_AdminPage.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Login\Loginn.cshtml" />
+    <Content Include="Views\Students\Registration.cshtml" />
+    <Content Include="Views\Students\StudentDetails.cshtml" />
+    <Content Include="Views\PARENTs\Create.cshtml" />
+    <Content Include="Views\PARENTs\Delete.cshtml" />
+    <Content Include="Views\PARENTs\Details.cshtml" />
+    <Content Include="Views\PARENTs\Edit.cshtml" />
+    <Content Include="Views\PARENTs\Index.cshtml" />
+    <Content Include="Views\Students\StudentEdit.cshtml" />
+    <Content Include="Views\Admins\Create.cshtml" />
+    <Content Include="Views\Admins\Delete.cshtml" />
+    <Content Include="Views\Admins\Details.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Admins\AdminPanel.cshtml" />
+    <Content Include="Views\Admins\StudentIndex.cshtml" />
+    <Content Include="Views\EntryStudent\Student_Entry.cshtml" />
+    <Content Include="Views\EntryStudent\StudentDetails.cshtml" />
+    <Content Include="Views\AdminPage\Index.cshtml" />
+    <Content Include="Views\Student_Admin\Create.cshtml" />
+    <Content Include="Views\Student_Admin\Delete.cshtml" />
+    <Content Include="Views\Student_Admin\Details.cshtml" />
+    <Content Include="Views\Student_Admin\Edit.cshtml" />
+    <Content Include="Views\Student_Admin\Index.cshtml" />
+    <Content Include="Views\PARENTs\ParentsRegistration.cshtml" />
+    <Content Include="Theme\modazhtml\modaz-package\.DS_Store" />
+    <Content Include="Theme\modazhtml\modaz-package\documentation\.DS_Store" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\.DS_Store" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\fonts\fontawesome-webfont.eot" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\fonts\fontawesome-webfont.woff" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\fonts\FontAwesome.otf" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\.DS_Store" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\images\shop\.DS_Store" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\css\closedhand.123" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\css\openhand.123" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\fonts\revicons\revicons90c6.eot" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\fonts\revicons\revicons90c6.ttf" />
+    <Content Include="Theme\modazhtml\modaz-package\modaz\rev-slider\fonts\revicons\revicons90c6.woff" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\._.DS_Store" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\documentation\._.DS_Store" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\modaz\._.DS_Store" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\modaz\images\._.DS_Store" />
+    <Content Include="Theme\modazhtml\__MACOSX\modaz-package\modaz\images\shop\._.DS_Store" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Default\Indexxx.cshtml" />
+    <Content Include="Views\Default\Contact.cshtml" />
+    <Content Include="Views\Default\Fees.cshtml" />
+    <Content Include="Views\Default\Foodmenu.cshtml" />
+    <Content Include="Views\Default\Annoucement.cshtml" />
+    <Content Include="Views\Admin_Parents\Create.cshtml" />
+    <Content Include="Views\Admin_Parents\Delete.cshtml" />
+    <Content Include="Views\Admin_Parents\Details.cshtml" />
+    <Content Include="Views\Admin_Parents\Edit.cshtml" />
+    <Content Include="Views\Admin_Parents\Index.cshtml" />
+    <Content Include="Views\Admin_Parents\Listofview.cshtml" />
+    <Content Include="Views\Student_Admin\Listofview.cshtml" />
+    <Content Include="Views\Staffs\Create.cshtml" />
+    <Content Include="Views\Staffs\Delete.cshtml" />
+    <Content Include="Views\Staffs\Details.cshtml" />
+    <Content Include="Views\Staffs\Edit.cshtml" />
+    <Content Include="Views\Staffs\Index.cshtml" />
+    <Content Include="Views\Staffs\Staffregistration.cshtml" />
+    <Content Include="Views\Admin_StudentEntries1\Index.cshtml" />
+    <Content Include="Views\Admin_StudentEntries1\Listofview.cshtml" />
+    <Content Include="Views\SendMailer\Index.cshtml" />
+    <Content Include="Views\PARENTs\PerentStudetn.cshtml" />
+    <Content Include="Views\PARENTs\StudentDetails.cshtml" />
+    <Content Include="Views\Admin_Staff\Create.cshtml" />
+    <Content Include="Views\Admin_Staff\Delete.cshtml" />
+    <Content Include="Views\Admin_Staff\Details.cshtml" />
+    <Content Include="Views\Admin_Staff\Edit.cshtml" />
+    <Content Include="Views\Admin_Staff\Index.cshtml" />
+    <Content Include="Views\Admin_Staff\Listofview.cshtml" />
+    <Content Include="Views\Default\Rule.cshtml" />
+    <Content Include="Views\PARENTs\StudentAdttendance.cshtml" />
+    <Content Include="Views\PARENTs\pEdit.cshtml" />
+    <Content Include="Views\Staffs\page.cshtml" />
+    <Content Include="Views\Staffs\Paging.cshtml" />
+    <Content Include="Views\aa\Index.cshtml" />
+    <Content Include="Views\aa\aa.cshtml" />
+    <Content Include="Views\Students\Changepassword.cshtml" />
+    <Content Include="Views\changepassword\ChangePassword.cshtml" />
+    <Content Include="Views\Student_Admin\example.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Theme\modazhtml\modaz-package\modaz\images\about\" />
+    <Folder Include="Views\USERTYPES\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65150</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44379/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

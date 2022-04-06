@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Hostel_Managament_System_MVC.Models.StudentEntry>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OUTTIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INTIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENTID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OUTTIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INTIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STUDENTID)
+        </td>
+       
+    </tr>
+}
+
+</table>

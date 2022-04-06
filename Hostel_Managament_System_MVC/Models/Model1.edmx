@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="hostelprojectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="FEES">
+          <Key>
+            <PropertyRef Name="FEESID" />
+          </Key>
+          <Property Name="FEESID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STUDENTID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="FeesPaidDate" Type="date" Nullable="false" />
+          <Property Name="Lastdate" Type="datetime" Nullable="false" />
+          <Property Name="Penelty" Type="int" />
+        </EntityType>
+        <EntityType Name="PARENTS">
+          <Key>
+            <PropertyRef Name="PARENTSID" />
+          </Key>
+          <Property Name="PARENTSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contactno" Type="varchar" MaxLength="15" />
+          <Property Name="STUDENTID" Type="int" />
+          <Property Name="Password" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ROOMID" />
+          </Key>
+          <Property Name="ROOMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROOMSTATUS" Type="int" />
+          <Property Name="STUDENTCOUNT" Type="int" />
+        </EntityType>
+        <EntityType Name="ROOM_MAPPING">
+          <Key>
+            <PropertyRef Name="ROOM_MAPPINGID" />
+          </Key>
+          <Property Name="ROOM_MAPPINGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROOMID" Type="int" />
+          <Property Name="STUDENTID" Type="int" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contactno" Type="varchar" MaxLength="15" />
+          <Property Name="Password" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="STUDENTID" />
+          </Key>
+          <Property Name="STUDENTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="FatherName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="CurrentAddress" Type="varchar" MaxLength="100" />
+          <Property Name="PermanentAddress" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contactno" Type="varchar" MaxLength="15" />
+          <Property Name="Parent_Contactno" Type="varchar" MaxLength="15" />
+          <Property Name="Password" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="StudentEntry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STUDENTID" Type="int" />
+          <Property Name="StudentName" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="OUTTIME" Type="time" Precision="7" />
+          <Property Name="INTIME" Type="time" Precision="7" />
+          <Property Name="latitude" Type="varchar" MaxLength="50" />
+          <Property Name="longitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USERTYPES">
+          <Key>
+            <PropertyRef Name="USERTYPESID" />
+          </Key>
+          <Property Name="USERTYPESID" Type="int" Nullable="false" />
+          <Property Name="USERTYPESNAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__FEES__STUDENTID__44FF419A">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="FEES" Type="Self.FEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENTID" />
+            </Principal>
+            <Dependent Role="FEES">
+              <PropertyRef Name="STUDENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARENTS__STUDENT__38996AB5">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="PARENTS" Type="Self.PARENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENTID" />
+            </Principal>
+            <Dependent Role="PARENTS">
+              <PropertyRef Name="STUDENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ROOM_MAPP__ROOMI__4222D4EF">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+          <End Role="ROOM_MAPPING" Type="Self.ROOM_MAPPING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ROOMID" />
+            </Principal>
+            <Dependent Role="ROOM_MAPPING">
+              <PropertyRef Name="ROOMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ROOM_MAPP__STUDE__412EB0B6">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="ROOM_MAPPING" Type="Self.ROOM_MAPPING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENTID" />
+            </Principal>
+            <Dependent Role="ROOM_MAPPING">
+              <PropertyRef Name="STUDENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hostelprojectModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FEES" EntityType="Self.FEES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PARENTS" EntityType="Self.PARENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOM_MAPPING" EntityType="Self.ROOM_MAPPING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentEntry" EntityType="Self.StudentEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERTYPES" EntityType="Self.USERTYPES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FEES__STUDENTID__44FF419A" Association="Self.FK__FEES__STUDENTID__44FF419A">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="FEES" EntitySet="FEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARENTS__STUDENT__38996AB5" Association="Self.FK__PARENTS__STUDENT__38996AB5">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="PARENTS" EntitySet="PARENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ROOM_MAPP__ROOMI__4222D4EF" Association="Self.FK__ROOM_MAPP__ROOMI__4222D4EF">
+            <End Role="ROOM" EntitySet="ROOM" />
+            <End Role="ROOM_MAPPING" EntitySet="ROOM_MAPPING" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ROOM_MAPP__STUDE__412EB0B6" Association="Self.FK__ROOM_MAPP__STUDE__412EB0B6">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ROOM_MAPPING" EntitySet="ROOM_MAPPING" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hostelprojectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FEE">
+          <Key>
+            <PropertyRef Name="FEESID" />
+          </Key>
+          <Property Name="FEESID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STUDENTID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="FeesPaidDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Lastdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Penelty" Type="Int32" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__FEES__STUDENTID__44FF419A" FromRole="FEES" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ROOMID" />
+          </Key>
+          <Property Name="ROOMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROOMSTATUS" Type="Int32" />
+          <Property Name="STUDENTCOUNT" Type="Int32" />
+          <NavigationProperty Name="ROOM_MAPPING" Relationship="Self.FK__ROOM_MAPP__ROOMI__4222D4EF" FromRole="ROOM" ToRole="ROOM_MAPPING" />
+        </EntityType>
+        <EntityType Name="ROOM_MAPPING">
+          <Key>
+            <PropertyRef Name="ROOM_MAPPINGID" />
+          </Key>
+          <Property Name="ROOM_MAPPINGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROOMID" Type="Int32" />
+          <Property Name="STUDENTID" Type="Int32" />
+          <NavigationProperty Name="ROOM" Relationship="Self.FK__ROOM_MAPP__ROOMI__4222D4EF" FromRole="ROOM_MAPPING" ToRole="ROOM" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__ROOM_MAPP__STUDE__412EB0B6" FromRole="ROOM_MAPPING" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contactno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="STUDENTID" />
+          </Key>
+          <Property Name="STUDENTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contactno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Parent_Contactno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FEES" Relationship="Self.FK__FEES__STUDENTID__44FF419A" FromRole="Student" ToRole="FEES" />
+          <NavigationProperty Name="ROOM_MAPPING" Relationship="Self.FK__ROOM_MAPP__STUDE__412EB0B6" FromRole="Student" ToRole="ROOM_MAPPING" />
+          <NavigationProperty Name="PARENTS" Relationship="hostelprojectModel.FK__PARENTS__STUDENT__38996AB5" FromRole="Student" ToRole="PARENT" />
+        </EntityType>
+        <EntityType Name="StudentEntry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="OUTTIME" Type="Time" Precision="7" />
+          <Property Name="INTIME" Type="Time" Precision="7" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STUDENTID" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__FEES__STUDENTID__44FF419A">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="FEES" Type="Self.FEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENTID" />
+            </Principal>
+            <Dependent Role="FEES">
+              <PropertyRef Name="STUDENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ROOM_MAPP__ROOMI__4222D4EF">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+          <End Role="ROOM_MAPPING" Type="Self.ROOM_MAPPING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ROOMID" />
+            </Principal>
+            <Dependent Role="ROOM_MAPPING">
+              <PropertyRef Name="ROOMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ROOM_MAPP__STUDE__412EB0B6">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="ROOM_MAPPING" Type="Self.ROOM_MAPPING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENTID" />
+            </Principal>
+            <Dependent Role="ROOM_MAPPING">
+              <PropertyRef Name="STUDENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hostelprojectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="FEES" EntityType="Self.FEE" />
+          <EntitySet Name="ROOMs" EntityType="Self.ROOM" />
+          <EntitySet Name="ROOM_MAPPING" EntityType="Self.ROOM_MAPPING" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="StudentEntries" EntityType="Self.StudentEntry" />
+          <AssociationSet Name="FK__FEES__STUDENTID__44FF419A" Association="Self.FK__FEES__STUDENTID__44FF419A">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="FEES" EntitySet="FEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ROOM_MAPP__ROOMI__4222D4EF" Association="Self.FK__ROOM_MAPP__ROOMI__4222D4EF">
+            <End Role="ROOM" EntitySet="ROOMs" />
+            <End Role="ROOM_MAPPING" EntitySet="ROOM_MAPPING" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ROOM_MAPP__STUDE__412EB0B6" Association="Self.FK__ROOM_MAPP__STUDE__412EB0B6">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ROOM_MAPPING" EntitySet="ROOM_MAPPING" />
+          </AssociationSet>
+          <EntitySet Name="USERTYPES" EntityType="hostelprojectModel.USERTYPE" />
+          <EntitySet Name="PARENTS" EntityType="hostelprojectModel.PARENT" />
+          <AssociationSet Name="FK__PARENTS__STUDENT__38996AB5" Association="hostelprojectModel.FK__PARENTS__STUDENT__38996AB5">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="PARENT" EntitySet="PARENTS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="USERTYPE">
+          <Key>
+            <PropertyRef Name="USERTYPESID" />
+          </Key>
+          <Property Name="USERTYPESID" Type="Int32" Nullable="false" />
+          <Property Name="USERTYPESNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PARENT">
+          <Key>
+            <PropertyRef Name="PARENTSID" />
+          </Key>
+          <Property Name="PARENTSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contactno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="STUDENTID" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Student" Relationship="hostelprojectModel.FK__PARENTS__STUDENT__38996AB5" FromRole="PARENT" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK__PARENTS__STUDENT__38996AB5">
+          <End Type="hostelprojectModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="hostelprojectModel.PARENT" Role="PARENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENTID" />
+            </Principal>
+            <Dependent Role="PARENT">
+              <PropertyRef Name="STUDENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hostelprojectModelStoreContainer" CdmEntityContainer="hostelprojectEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="hostelprojectModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEES">
+            <EntityTypeMapping TypeName="hostelprojectModel.FEE">
+              <MappingFragment StoreEntitySet="FEES">
+                <ScalarProperty Name="FEESID" ColumnName="FEESID" />
+                <ScalarProperty Name="STUDENTID" ColumnName="STUDENTID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FeesPaidDate" ColumnName="FeesPaidDate" />
+                <ScalarProperty Name="Lastdate" ColumnName="Lastdate" />
+                <ScalarProperty Name="Penelty" ColumnName="Penelty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOMs">
+            <EntityTypeMapping TypeName="hostelprojectModel.ROOM">
+              <MappingFragment StoreEntitySet="ROOM">
+                <ScalarProperty Name="ROOMID" ColumnName="ROOMID" />
+                <ScalarProperty Name="ROOMSTATUS" ColumnName="ROOMSTATUS" />
+                <ScalarProperty Name="STUDENTCOUNT" ColumnName="STUDENTCOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOM_MAPPING">
+            <EntityTypeMapping TypeName="hostelprojectModel.ROOM_MAPPING">
+              <MappingFragment StoreEntitySet="ROOM_MAPPING">
+                <ScalarProperty Name="ROOM_MAPPINGID" ColumnName="ROOM_MAPPINGID" />
+                <ScalarProperty Name="ROOMID" ColumnName="ROOMID" />
+                <ScalarProperty Name="STUDENTID" ColumnName="STUDENTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="hostelprojectModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="hostelprojectModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="STUDENTID" ColumnName="STUDENTID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+                <ScalarProperty Name="Parent_Contactno" ColumnName="Parent_Contactno" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEntries">
+            <EntityTypeMapping TypeName="hostelprojectModel.StudentEntry">
+              <MappingFragment StoreEntitySet="StudentEntry">
+                <ScalarProperty Name="STUDENTID" ColumnName="STUDENTID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OUTTIME" ColumnName="OUTTIME" />
+                <ScalarProperty Name="INTIME" ColumnName="INTIME" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERTYPES">
+            <EntityTypeMapping TypeName="hostelprojectModel.USERTYPE">
+              <MappingFragment StoreEntitySet="USERTYPES">
+                <ScalarProperty Name="USERTYPESNAME" ColumnName="USERTYPESNAME" />
+                <ScalarProperty Name="USERTYPESID" ColumnName="USERTYPESID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARENTS">
+            <EntityTypeMapping TypeName="hostelprojectModel.PARENT">
+              <MappingFragment StoreEntitySet="PARENTS">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="STUDENTID" ColumnName="STUDENTID" />
+                <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PARENTSID" ColumnName="PARENTSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

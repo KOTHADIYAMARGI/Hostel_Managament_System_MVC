@@ -1,0 +1,79 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Hostel_Managament_System_MVC.Models.Staff>
+
+@{
+    ViewBag.Title = "Paging";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+<h2>Paging</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            FirstName
+            @*@Html.DisplayNameFor(model => model.FirstName)*@
+        </th>
+        <th>
+            LastName
+            @*@Html.DisplayNameFor(model => model.LastName)*@
+        </th>
+        <th>
+            Address
+            @*@Html.DisplayNameFor(model => model.Address)*@
+        </th>
+        <th>
+            Email
+            @*@Html.DisplayNameFor(model => model.Email)*@
+        </th>
+        <th>
+            Contactno
+            @*@Html.DisplayNameFor(model => model.Contactno)*@
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contactno)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StaffID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StaffID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StaffID })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>  page 1 to 3</p>
+<div class="pagedList ">
+  
+        <ul class="pagination">
+            @*<ul class="pagination">*@
+            <li class="page-item ">
+
+                @*@Html.PagedListPager(Model, page => Url.Action("Paging", new { page, @class = "btn btn-success" }), PagedListRenderOptions.PageNumbersOnly)*@
+                @Html.PagedListPager(Model, page => Url.Action("Paging", new { page, pageSize = Model.PageSize }), PagedListRenderOptions.PageNumbersOnly)
+            </li>
+            </ul>
+        
+</div>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
